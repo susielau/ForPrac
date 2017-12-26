@@ -12,6 +12,8 @@
 
 ## POJ
 
+POJ Link : http://poj.org/problemlist
+
 本部分用于记录`POJ`刷题过程，复杂的题在子目录下有解决文档。
 
 `xxxx_lang`代表第xxxx题lang语言解决版本如`1000_c.c`
