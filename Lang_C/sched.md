@@ -2,9 +2,11 @@
 
 ## Working
 
-chap1
+chap3
 
 ## Plan
 
-*Chap x DDL xxx*
+*Chap 1,2 DDL 12/26/2017*
+
+*Chap 3,4,5,6 DDL 12/27/2017*
 
