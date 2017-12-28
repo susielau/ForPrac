@@ -1,13 +1,3 @@
-// Problem NO.5
-#include <stdio.h>
-int main(){
-    printf("****************\n");
-    printf("Very Good!\n");
-    printf("****************\n");
-    return 0;
-}
-
-
 // Problem NO.6
 #include <stdio.h>
 int main(){
@@ -25,5 +15,3 @@ int max(int a,int b){
     else z=b;
     return (z);
 }
-
-
