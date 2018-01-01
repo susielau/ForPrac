@@ -44,17 +44,13 @@ void ScheFunc()
 int ListLength(StaticLinkList L)
 {
     int length,i;
-    for (length=0,i=1;L[i].cur!=0;i=L[i].cur)
+    for (length=0,i=1;L[i].cur!=0;i++)
     {
         length++;
     }
     return length;
 }
 
-void Visit(ElemType e)
-{
-    printf("%c\t",e);
-}
 
 int Malloc_SLL(StaticLinkList space)
 {
@@ -90,11 +86,8 @@ Status ListInsert(StaticLinkList L,int i,ElemType e)
 Status ListTraverse(StaticLinkList L)
 {
     int i=1;
-    int head=i;
-    while (L[head].cur!=0)
-    {
-        Visit(L[head].data);
-        head=L[head].cur;
+    for (i=0;L[i].cur!=0;i++){
+        printf("%d ",L[i].data);
     }
     printf("\n");
     return OK;
@@ -105,12 +98,12 @@ int main()
     StaticLinkList L;
     Status i;
     int j;
-    printf("Constructing static link list...\n");
     InitList(L);
     for (j=0;j<=5;j++)
     {
-        i=ListInsert(L,1,j);
+        ListInsert(L,1,j);
     }
+    printf("List Length = %d\n", ListLength(L));
     printf("After inserting data = ");
     ListTraverse(L);
     printf("\n");
