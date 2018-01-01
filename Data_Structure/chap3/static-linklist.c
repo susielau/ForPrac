@@ -30,25 +30,16 @@ Status InitList(StaticLinkList space)
     return OK;
 }
 
-void ScheFunc()
-{
-    for (int i=0;i<=100;i+=5)
-    {
-        printf("%4d%%",i);
-        printf("\b\b\b\b\b");
-        sleep(1);
-    }
-    printf("\n");
-}
-
 int ListLength(StaticLinkList L)
 {
-    int length,i;
-    for (length=0,i=1;L[i].cur!=0;i++)
+    int j=0;
+    int i=L[MAXSIZE-1].cur;
+    while (i)
     {
-        length++;
+        i=L[i].cur;
+        j++;
     }
-    return length;
+    return j;
 }
 
 
@@ -85,11 +76,35 @@ Status ListInsert(StaticLinkList L,int i,ElemType e)
 
 Status ListTraverse(StaticLinkList L)
 {
-    int i=1;
-    for (i=0;L[i].cur!=0;i++){
+    int i=L[MAXSIZE-1].cur;
+    while (i){
         printf("%d ",L[i].data);
+        i=L[i].cur;
     }
     printf("\n");
+    return OK;
+}
+
+void Free_SSL(StaticLinkList L,int k)
+{
+    L[k].cur=L[0].cur;
+    L[0].cur=k;
+}
+
+Status ListDelete(StaticLinkList L,int i)
+{
+    int j,k;
+    if(i<1 || i>ListLength(L)){
+        return ERROR;
+    }
+    k=MAXSIZE-1;
+    for (j=1;j<=i-1;j++)
+    {
+        k=L[k].cur;
+    }
+    j=L[k].cur;
+    L[k].cur=L[j].cur;
+    Free_SSL(L,j);
     return OK;
 }
 
@@ -97,14 +112,18 @@ int main()
 {
     StaticLinkList L;
     Status i;
-    int j;
+    int j,k;
     InitList(L);
-    for (j=0;j<=5;j++)
+    for (j=5;j>=0;j--)
     {
         ListInsert(L,1,j);
     }
     printf("List Length = %d\n", ListLength(L));
     printf("After inserting data = ");
     ListTraverse(L);
-    printf("\n");
+    k=L[6].data;
+    printf("%d",k);
+    i=ListDelete(L,1);
+    printf("After deleting element %d: ", k);
+    ListTraverse(L);
 }
