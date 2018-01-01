@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
+#include <time.h>
+
 #define OK 1
 #define ERROR 0
 #define TRUE 1
@@ -12,6 +15,18 @@ typedef struct Node
     struct Node *next;
 } Node;
 typedef struct Node *LinkList;
+
+Status ListTraverse(LinkList L)
+{
+    LinkList i;
+    i=L->next;
+    while (i)
+    {
+        printf("%d ",i->data);
+        i=i->next;
+    }
+    return OK;
+}
 
 void CreateListHead(LinkList *L,int n)
 {
@@ -121,4 +136,31 @@ Status ClearList(LinkList *L)
     }
     (*L)->next=NULL;
     return OK;
+}
+
+int main()
+{
+    LinkList L;
+    ElemType e;
+    int j,k;
+    for (j=0;j<=5;j++)
+    {
+        CreateListHead(&L,j);
+    }
+    printf("After initiating link list = ");
+    ListTraverse(L);
+    printf("\n");
+    ListInsert(&L,2,1);
+    printf("After inserting 1 at 2nd position = ");
+    ListTraverse(L);
+    printf("\n");
+    ListDelete(&L,4,&e);
+    printf("Element deleted at 4th position = %d ",e);
+    printf("\n");
+    printf("List after the above = ");
+    ListTraverse(L);
+    printf("\n");
+    ClearList(&L);
+    ListTraverse(L);
+    return 0;
 }
