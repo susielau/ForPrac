@@ -9,7 +9,6 @@
 #define FALSE 0
 typedef int Status;
 typedef int QElemType;
-typedef int QElemType;
 typedef struct QNode /*结点结构*/
 {
     QElemType data;
