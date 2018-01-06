@@ -5,7 +5,7 @@ typedef char String[MAXSIZE];
 typedef struct
 {
     char ch[MAXSIZE];
-    int length
+    int length;
 }SqString;
 typedef struct{
     char *ch;
