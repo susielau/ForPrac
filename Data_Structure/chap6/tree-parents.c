@@ -26,15 +26,19 @@ Status InitTree(PTree *T)
 Status CreateTree(PTree *T)
 {
     printf("Please enter the number of nodes:\n");
-    scanf("%d",(*T).n);
+    // scanf("%d",(*T).n);
+    // can be
+    // scanf("%d",&(*T).n);
+    // or
+    scanf("%d",&T->n);
     printf("Please enter the value of nodes, and the position of parents:\n");
     for (int i=0;i<(*T).n;i++)
     {
         printf("nodes[%d]:",i);
-        scanf("%d",(*T).nodes[i].data);
+        scanf("%d",&(*T).nodes[i].data);
         printf("\n");
         printf("parents:");
-        scanf("%d",(*T).nodes[i].parent);
+        scanf("%d",&(*T).nodes[i].parent);
         printf("\n");
     }
     (*T).nodes[0].parent=-1;
