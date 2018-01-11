@@ -1,5 +1,6 @@
 //孩子表示法
 #include <stdio.h>
+#include <stdlib.h>
 #define MAX_TREE_SIZE 100
 #define OK 1
 #define ERROR 0
@@ -11,7 +12,7 @@ typedef struct CTNode
 {
     int child;
     int next;
-} *ChildPtr;
+} * ChildPtr;
 typedef struct
 {
     TElemType data;
@@ -21,32 +22,34 @@ typedef struct
 typedef struct
 {
     CTbox nodes[MAX_TREE_SIZE]; /*结点数组*/
-    int n; /*根位置，结点数*/
+    int n;                      /*根位置，结点数*/
 } CTree;
 
 Status InitTree(CTree *T)
 {
-    (*T).n=0;
+    (*T).n = 0;
     return OK;
 }
 
 Status CreateTree(CTree *T)
 {
     printf("Please enter the number of nodes:\n");
-    scanf("%d",&T->n);
+    scanf("%d", &T->n);
     printf("Please enter the value of each node,position of parent:\n");
-    for (int i=0;i<(*T).n;i++)
+    for (int i = 0; i < (*T).n; i++)
     {
-        printf("node[%d]:",i);
-        scanf("%s",&T->nodes[i].data);
-        printf("\n");
+        printf("node[%d]:", i);
+        scanf("%s", &T->nodes[i].data);
         printf("parent:");
-        scanf("%d",&T->nodes[i].parent);
+        scanf("%d", &T->nodes[i].parent);
+        // 万一有多个child怎么办
+        // 利用malloc分配空间
+        T->nodes[i].firstchild = (ChildPtr)malloc(sizeof(struct CTNode));
         printf("Please enter the value of child and next:\n");
         printf("child:");
-        scanf("%d",&T->nodes[i].firstchild->child);
+        scanf("%d", &T->nodes[i].firstchild->child);
         printf("next:");
-        scanf("%d",&T->nodes[i].firstchild->next);
+        scanf("%d", &T->nodes[i].firstchild->next);
     }
     return OK;
 }
